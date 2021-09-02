@@ -13,7 +13,7 @@ const Tweets = () => {
     const fetchtweets = async () => {
         try {
           const config = { headers };
-          const res = await API.get(`/comments`, config);
+          const res = await API.get(`/comments?_limit=10`, config);
           setTweetsData(res.data);
           console.log(res.data)
           setLoading(true);
@@ -50,10 +50,11 @@ const Tweets = () => {
 //         return false;
 //       }
 // }
-//       useEffect(() => {
-//         fetchtweets();
-//         fetchartist();
-//       }, [refreshData]);
+
+      useEffect(() => {
+        fetchtweets();
+        fetchartist();
+      }, [refreshData]);
     
     return (
       <div className="container-fluid mt-4">
