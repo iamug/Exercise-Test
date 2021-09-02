@@ -1,11 +1,10 @@
 import React from "react";
-import { Link } from "react-router-dom"
 
-interface AlbumProps {
+interface AlbumPhotoProps {
     title: string;
     picture: string;
 }
-const Album : React.FC<AlbumProps> = ({ title, picture }) => {
+const AlbumPhoto : React.FC<AlbumPhotoProps> = ({ title, picture }) => {
   return (
     
 <div className="card card-cover overflow-hidden h-100 rounded-5 shadow-lg text-decoration-none">
@@ -19,4 +18,4 @@ const Album : React.FC<AlbumProps> = ({ title, picture }) => {
   );
 };
 
-export default Album;
+export default AlbumPhoto;

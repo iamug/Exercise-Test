@@ -6,7 +6,7 @@ interface AlbumProps {
     albumId : number
     userId : number
 }
-const Artist : React.FC<AlbumProps> = ({ name, albumId, userId }) => {
+const Album : React.FC<AlbumProps> = ({ name, albumId, userId }) => {
   return (
     <Link to={`/artists/${userId}/albums/${albumId}/photos`} className="text-decoration-none">
 <div className="card card-cover overflow-hidden h-100 rounded-5 shadow-lg text-decoration-none">
@@ -21,4 +21,4 @@ const Artist : React.FC<AlbumProps> = ({ name, albumId, userId }) => {
   );
 };
 
-export default Artist;
+export default Album;
