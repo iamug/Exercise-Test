@@ -1,0 +1,31 @@
+// Override default variables before the import
+
+@import "../node_modules/bootstrap/scss/functions";
+
+@import "../node_modules/bootstrap/scss/mixins";
+
+$primary: #0f4e71;
+
+@import "../node_modules/bootstrap/scss/variables";
+//@import "../node_modules/bootstrap/scss/mixins";
+
+$theme-colors: (
+  "primary": $primary,
+  "secondary": $secondary,
+  "success": $success,
+  "info": $info,
+  "warning": $warning,
+  "danger": $danger,
+  "light": $light,
+  "dark": $dark,
+);
+
+$custom-colors: (
+  "primaryLight": tint-color($primary, 80%),
+  "lightgray": $gray-400,
+  "primaryContrast": color-contrast(#ffffff),
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+// Import Bootstrap and its default variables
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
