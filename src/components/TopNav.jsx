@@ -18,18 +18,7 @@ const TopNav = () => {
         >
           <i className="fas fa-align-left" />
         </button>
-        <div className="input-group flex-nowrap col-6 col-md-4">
-          <div class="input-group-text bg-white  border-end-0">
-            <i className="fas fa-search link-lightgray"></i>
-          </div>
-
-          <input
-            className="form-control form-control-dark shadow-none  w-100 border-start-0"
-            type="text"
-            placeholder="Search"
-            aria-label="Search"
-          />
-        </div>
+       
 
         <div className="navbar-nav col-lg-4 col-4 text-right">
           <div className="nav-item text-nowrap">
@@ -38,10 +27,12 @@ const TopNav = () => {
             </a>
             <i class="bi bi-grip-vertical"></i>
             <span
-              className=" text-primary fw-bold d-none d-md-inline-block px-3"
+              className=" text-primary fw-bold  px-3"
               href="#"
             >
-              Silver Hill Hospital
+                 <i class="bi bi-person-circle me-2"></i>
+                 <span className="d-none d-md-inline-block">   Profile</span>
+            
             </span>
           </div>
         </div>
