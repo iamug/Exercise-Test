@@ -10,6 +10,11 @@ body {
   overflow-y: auto;
 }
 
+.card:hover {
+  transform: translateY(-10px) !important;
+  box-shadow: 5px 2rem 3rem rgb(0 0 0 / 40%) !important;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

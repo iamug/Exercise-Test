@@ -1,17 +1,33 @@
 import React, { useEffect, useState }  from 'react'
 import API from "../controllers/api"
-import { Artist } from '../components/';
+import { Album } from '../components/';
+import { useParams } from "react-router-dom";
 
-const Artists = () => {
-    let [artistsData, setArtistsData] = useState([]);
+const Albums = () => {
+    let [albumsData, setAlbumsData] = useState([]);
+    let [artistData, setArtistData] = useState<any>([]);
     let [refreshData, setRefreshData] = useState(false);
     let [loading, setLoading] = useState(false);
     let headers = { "Content-Type": "application/json" };
-    const fetchartists = async () => {
+    const { userId } = useParams<any>();
+    const fetchalbums = async () => {
         try {
           const config = { headers };
-          const res = await API.get("/users", config);
-          setArtistsData(res.data);
+          const res = await API.get(`/albums?userId=${userId}`, config);
+          setAlbumsData(res.data);
+          console.log(res.data)
+          setLoading(true);
+          return;
+        } catch (err) {
+          console.log(err);
+          return false;
+        }
+      };
+    const fetchartist = async () => {
+        try {
+          const config = { headers };
+          const res = await API.get(`/users/${userId}`, config);
+          setArtistData(res.data);
           console.log(res.data)
           setLoading(true);
           return;
@@ -21,7 +37,8 @@ const Artists = () => {
         }
       };
       useEffect(() => {
-        fetchartists();
+        fetchalbums();
+        fetchartist();
       }, [refreshData]);
     
     return (
@@ -29,7 +46,7 @@ const Artists = () => {
       <div className="px-2">
         <div className="text-center">
           <h3>
-            Our Artists
+            {artistData?.name} Albums
           </h3>
         </div>
         <div className="mt-3">
@@ -56,11 +73,11 @@ const Artists = () => {
           <div>
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-3  align-items-stretch py-4 px-3 px-xxl-5 g-5">   
           {loading &&
-                  artistsData &&
-                  artistsData.length >= 1 &&
-                  artistsData.map((artist : any, index) => (
+                  albumsData &&
+                  albumsData.length >= 1 &&
+                  albumsData.map((artist : any, index) => (
                     <div className="col" key={index}>
-                    <Artist name={artist.name} email={artist.email} phone={artist.phone} userId={artist.id} />
+                    <Album name={artist.title}  albumId={artist.id} userId={userId} />
                     </div>
                   ))}
               </div>
@@ -71,4 +88,4 @@ const Artists = () => {
     )
 }
 
-export default Artists
+export default Albums
