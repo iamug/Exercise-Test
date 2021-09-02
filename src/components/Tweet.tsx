@@ -1,26 +1,27 @@
 import React from "react";
 
-interface AlbumPhotoProps {
+interface TweetProps {
     comment : {
         body: string;
         name: string;
         id: number
-    }
+    },
+    // deletetweet : any
 }
-const AlbumPhoto : React.FC<AlbumPhotoProps> = ( { comment :  { body, name, id }}) => {
+const Tweet : React.FC<TweetProps> = ( { comment :  { body, name, id }  }) => {
   return (
-      <div className="row">
-          <div className="col-8">
+      <div className="row border py-2">
+          <div className="col-11">
               <h4>{ body }</h4>
-              <h6>{ name }</h6>
+              <span className="text-muted">{ name }</span>
           </div>
-          <div className="col-4 justify-content-end">
-              <i className="fas fa-edit"></i>
-              <i className="fas fa-trash"></i>
+          <div className="col-1 justify-content-end aligin-items-center align-content-center">
+              <i className="fas fa-edit mx-2" ></i>
+              <i className="fas fa-trash mx-2" ></i>
           </div>
       </div>
 
   );
 };
 
-export default AlbumPhoto;
+export default Tweet;
